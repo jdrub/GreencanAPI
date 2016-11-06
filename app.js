@@ -19,7 +19,7 @@ const router = getRouter(shell);
 const app = express();
 
 app.use(morgan('dev'));
-app.use(bodyParser());
+app.use(bodyParser.raw({ type: 'audio/wav'}));
 app.use('/', router);
 
 require('http').createServer(app).listen(3000, function(){
