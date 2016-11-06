@@ -1,2 +1,2 @@
 # GreencanAPI
-sound-based classification api
+sound-based object classification api
