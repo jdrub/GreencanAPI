@@ -1,20 +1,15 @@
-// with express 3.x
-import morgan from 'morgan';
-import bodyParser from 'body-parser';
-import path from 'path';
-import express from 'express';
-import webpack from 'webpack';
-import webpackMiddleware from 'webpack-dev-middleware';
-import config from './webpack.config.js';
-import PythonShell from 'python-shell';
+var express = require('express');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var express = require('express');
+var router = express.Router();
 
-const router = express.Router();
-
+var PythonShell = require('python-shell');
 let shell;
 let output = '';
 
 router.get('/', function(req, res) {
-    res.send('hey');
+  res.send('home page');
 });
 
 router.get('/upload', function(req, res){
@@ -39,12 +34,10 @@ router.get('/upload', function(req, res){
 
 
 const app = express();
-const compiler = webpack(config);
 
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use('/', router);
-app.use(webpackMiddleware(compiler));
 
 require('http').createServer(app).listen(3000, function(){
 
